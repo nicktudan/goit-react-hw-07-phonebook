@@ -11,14 +11,13 @@ import {
 export const ContactListItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
+  const handleDelete = () => dispatch(deleteContact(id));
+
   return (
     <ContactListItems>
       <ContactListItemsData>{name}:</ContactListItemsData>
       <ContactListItemsData>{number}</ContactListItemsData>
-      <ContactListItemsBtn
-        type="button"
-        onClick={() => dispatch(deleteContact(id))}
-      >
+      <ContactListItemsBtn type="button" onClick={handleDelete}>
         Delete
       </ContactListItemsBtn>
     </ContactListItems>

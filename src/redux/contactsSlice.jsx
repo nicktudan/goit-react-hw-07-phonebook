@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { nanoid } from 'nanoid';
 
 
-const contactsInitialState = { items: [] };
+const contactsInitialState = { items: [], isLoading: false, error: null };
 
 const contactsSlice = createSlice({
   name: 'contacts',
