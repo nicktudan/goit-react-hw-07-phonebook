@@ -10,13 +10,13 @@ import { Form, Field, FormBtn, ErrorMessage } from './ContactForm.styled';
 const ContactSchema = yup.object().shape({
   name: yup.string().trim().matches(/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
     'Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore dArtagnan').required('Required'),
-  number: yup.string().trim().matches(/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
+  phone: yup.string().trim().matches(/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
     'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +').required('Required'),
 })
 
 const initialValues = {
   name: '',
-  number: '',
+  phone: '',
 }
 
 export const ContactForm = () => {
@@ -28,18 +28,18 @@ export const ContactForm = () => {
     const isExist = contacts.some(
       contact =>
         (contact.name.toLowerCase() === newContact.name.toLowerCase() &&
-          contact.number === newContact.number) ||
-        contact.number === newContact.number
+          contact.phone === newContact.phone) ||
+        contact.phone === newContact.phone
     );
     if (isExist) {
       alert(
-        `${newContact.name} or ${newContact.number} is already in contacts.`
+        `${newContact.name} or ${newContact.phone} is already in contacts.`
       );
     } else {
         dispatch(addContact(newContact));
         resetForm({
           name: '',
-          number: '',
+          phone: '',
         });
     }
   };
@@ -56,7 +56,7 @@ export const ContactForm = () => {
       <Form>
         <label>
           Name
-          <Field type="text" name="name" placeholder="enter a fullname" />
+          <Field type="text" name="name" placeholder="enter a name" />
           <ErrorMessage name="name" component="div" />
         </label>
         <label>

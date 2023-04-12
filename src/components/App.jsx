@@ -12,8 +12,9 @@ import { GlobalStyle } from './GlobalStyle';
 import { Layout, TitlePhonebook, TitleContacts } from './Layout';
 
 export default function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchContacts());
