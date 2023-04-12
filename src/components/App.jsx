@@ -1,17 +1,19 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 import { fetchContacts } from 'redux/operations';
+import { selectIsLoading,  } from 'redux/selectors';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Loader } from './Loader/Loader';
 import { GlobalStyle } from './GlobalStyle';
 import { Layout, TitlePhonebook, TitleContacts } from './Layout';
 
 export default function App() {
   const dispatch = useDispatch();
-  //  const isLoading = useSelector(getIsLoading);
-  //  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -24,7 +26,7 @@ export default function App() {
       <ContactForm />
       <TitleContacts>Contacts</TitleContacts>
       <Filter />
-      {/* {isLoading && !error && <b>Request in progress...</b>} */}
+      {isLoading && <Loader />}
       <ContactList />
     </Layout>
   );

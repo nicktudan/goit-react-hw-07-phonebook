@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 
 import { Form, Field, FormBtn, ErrorMessage } from './ContactForm.styled';
@@ -56,17 +56,13 @@ export const ContactForm = () => {
       <Form>
         <label>
           Name
-          <Field type="text" name="name" placeholder="enter a name" />
+          <Field type="text" name="name" placeholder="enter a fullname" />
           <ErrorMessage name="name" component="div" />
         </label>
         <label>
           Number
-          <Field
-            type="tel"
-            name="number"
-            placeholder="enter the phone number"
-          />
-          <ErrorMessage name="number" component="div" />
+          <Field type="tel" name="phone" placeholder="enter the phone number" />
+          <ErrorMessage name="phone" component="div" />
         </label>
         <FormBtn type="submit">Add contact</FormBtn>
       </Form>
